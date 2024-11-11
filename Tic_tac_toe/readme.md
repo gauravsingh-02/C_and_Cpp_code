@@ -11,24 +11,29 @@ Welcome to **Tic-Tac-Toe** - the OG 3x3 grid game that’ll have you doubting yo
 
 ## Code Overview
 
-- **`char board[3][3]`**: This 2D array is our Tic-Tac-Toe battlefield. It starts off as a grid of numbers 1 to 9 to guide the players on where to place their markers.
-  
-- **`display_board()`**: Shows the board to the players. This function is called after every turn to help the players keep track of moves and plot their next one (or maybe just admire their X's and O's).
+The program includes:
 
-- **`check_winner()`**: Checks if either player has achieved victory by completing a row, column, or diagonal with their marker. If someone’s won, it’s game over! 
+- **Headers**: The standard libraries `stdio.h` and `string.h` are included for input/output operations and string handling.
 
-- **`check_draw()`**: Runs through the board to see if it's completely filled without any winning line. If all spots are taken and there's still no winner, it’s a tie - which is only slightly less satisfying than winning.
+- **Functions**:
+  - **`printblock(char block[][3])`**: Displays the current state of the Tic-Tac-Toe board.
+  - **`chooseSlot(int Slot, int *row, int *col)`**: Converts a chosen slot number (1-9) to corresponding row and column indices on the board.
+  - **`CheckWinner(char block[][3])`**: Checks the board to see if there’s a winner or if the match is a draw.
+  - **`checkValidity(char block[][3], int Slot)`**: Verifies if a chosen slot is available for marking.
 
-- **`place_marker(int slot)`**: Accepts a slot number (1-9) and places the current player's marker (X or O) on the board. Think of this as the function where the action actually happens!
+### Main Logic
 
-- **`swap_player_and_marker()`**: Switches the current player and their marker. This function makes sure the game flows smoothly by alternating turns between the players after every move.
+The main function contains:
 
-- **Main Game Loop**: Inside `main()`, this loop keeps the game running:
-  - Prompts the player for a move.
-  - Checks if the chosen slot is valid (i.e., not already taken and within bounds).
-  - Places the marker, shows the updated board, and checks for a win or a draw.
-  - If the game isn’t over, it swaps players and continues the battle.
+- A 3x3 character array, **`block`**, initialized with numbers 1-9 representing each slot on the board.
+- Two strings, **`player1`** and **`player2`**, to store the names of the players.
+
+### Game Loop
+
+- The board is printed at the start of each turn using **`printblock`**.
+- Each player takes turns to choose a slot. If the slot is valid, it is marked with 'X' or 'O'.
+- **`CheckWinner`** is called to determine if there’s a winner. If not, the game proceeds to the next turn until a player wins or all slots are filled (resulting in a draw).
 
 ---
 
-And that’s pretty much it! Enjoy the game, challenge your friends, and may the best player win!
+Enjoy the game, challenge your friends, and may the best player win!
